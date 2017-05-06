@@ -1,4 +1,7 @@
 # assignment-4.4
+1))))))))))))))))
+
+###Task1.java###
 
 package mapreduce.demo.task1;
 
@@ -42,7 +45,10 @@ public class Task1 {
 		job.waitForCompletion(true);
 	}
 }
-//mapper class
+
+
+###Task1Mapper.java###
+
 package mapreduce.demo.task1;
 
 import java.io.IOException;
@@ -61,7 +67,11 @@ public class Task1Mapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 		context.write(count,new IntWritable(1));
 	}
 }
-//reducer class
+
+
+###Task1Reducer.java###
+
+
 package mapreduce.demo.task1;
 
 import java.io.IOException;
