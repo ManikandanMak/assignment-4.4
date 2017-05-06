@@ -56,9 +56,9 @@ public class Task1Mapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 	public void map(LongWritable key, Text value, Context context) 
 			throws IOException, InterruptedException {
 		String[] lineArray = value.toString().split(",");//splitting records
-		Text user = new Text(lineArray[4]);//passenger sex
+		Text count = new Text(lineArray[4]);//passenger sex
 		if(lineArray[1].equals("1"))//validating for dead passenger
-		context.write(user,new IntWritable(1));
+		context.write(count,new IntWritable(1));
 	}
 }
 //reducer class
@@ -74,15 +74,15 @@ public class Task1Reducer extends Reducer<Text, IntWritable, Text, IntWritable>
 {	
 	public void reduce(Text key, Iterable<IntWritable> values,Context context) throws IOException, InterruptedException
 	{
-		int sum = 0;
+		int Val = 0;
 		
 	    	
-		for (IntWritable value : values) {
+		for (IntWritable v : values) {
             
-			sum = sum + value.get() ;
+			Val = Val + v.get() ;
 		}
 		
 
-		context.write(key, new IntWritable(sum));
+		context.write(key, new IntWritable(Val));
 	}
 }
